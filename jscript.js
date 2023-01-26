@@ -1,3 +1,4 @@
+// calling elements from document to use in my script.
 const currentCity = document.getElementById('cityName');
 const userSearch = document.getElementById('userSearch');
 const searchButton = document.getElementById('searchButton');
@@ -29,26 +30,30 @@ const threeIcon = document.getElementById('dayThreeIcon');
 const fourIcon = document.getElementById('dayFourIcon');
 const cityDisplay = document.querySelector('.cityDisplay');
 const dayDisplay = document.querySelector('.dayDisplays');
-
+//add event listener to search button citySearch function after search button is clicked.
 searchButton.addEventListener("click", citySearch)
 
+//function to search for city
 function citySearch(event){
     event.preventDefault();
+    //searches for a city using the value of userSearch with the openweathermap URL.
     let targetSearch = userSearch.value;
     let requestURL = "https://api.openweathermap.org/data/2.5/forecast?q="+targetSearch+"&units=imperial&appid=a005b66c9daeb33ec1e93b0091094249"
-    console.log(requestURL);
     fetch(requestURL)
     .then(function (response) {
         return response.json();
     })
     .then (function (data) {
+        //grabs the icon codes for the city the user is searching
         let iconCode = data.list[0].weather[0].icon;
         let oneCode = data.list[8].weather[0].icon;
         let twoCode = data.list[16].weather[0].icon;
         let threeCode = data.list[24].weather[0].icon;
         let fourCode = data.list[32].weather[0].icon;
+        //displays the weather sections
         cityDisplay.style.opacity = "100";
         dayDisplay.style.opacity = "100";
+        //populating elements with data we got from the requestURL
         cityIcon.src = "https://openweathermap.org/img/w/"+iconCode+".png";
         currentCity.innerText = data.city.name;
         cityDate.innerText = data.list[0].dt_txt;
@@ -75,15 +80,19 @@ function citySearch(event){
         fourTemp.innerText = data.list[32].main.temp+' °F';
         fourWind.innerText = "Wind: "+data.list[32].wind.speed+'mph';
         fourHum.innerText = "Humidity: "+data.list[32].main.humidity+"%";
+        //creates newList button when city is searched
         let newList = document.createElement("button");
         newList.innerText = data.city.name;
+        // add event listener to newList button to run fetchHistory when button is clicked.
         newList.addEventListener("click", fetchHistory);
         newList.classList.add("historybtn");
+        //make newList the child of the cityHistory <ul>
         cityHistory.appendChild(newList);
     });
 }
 
 function fetchHistory(event) {
+    //finds the inner text of the event target and uses that to search for a city.
     let targetCity = event.target.innerText;
     let requestURL = "https://api.openweathermap.org/data/2.5/forecast?q="+targetCity+"&units=imperial&appid=a005b66c9daeb33ec1e93b0091094249";
     fetch(requestURL)
@@ -91,6 +100,7 @@ function fetchHistory(event) {
         return response.json();
     })
     .then (function (data) {
+        //same code as before, except this time we don't add the newList button.
         let iconCode = data.list[0].weather[0].icon;
         let oneCode = data.list[8].weather[0].icon;
         let twoCode = data.list[16].weather[0].icon;
