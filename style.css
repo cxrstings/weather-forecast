@@ -1,0 +1,111 @@
+body {
+    background-color: #7dcdd1;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff51;
+}
+
+.searchBar {
+    background-color: #ffffff51;
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 13vh;
+}
+
+.searchBar h2, input{
+    text-align: center;
+}
+
+#searchButton {
+    background-color: pink;
+}
+
+#cityHistory {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    background-color: #ffffff51;
+    width: 28vw;
+}
+
+.historybtn {
+    background-color: rgb(16, 155, 16);
+    width: 25vw;
+    height: 30px;
+    font-size: larger;
+}
+
+#container{
+    display: flex;
+}
+
+.currentCity {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff51;
+    border-radius: 25px;
+    border: 2px dashed #000000;
+    width: 225px;
+    height: 225px;
+    text-align: center;
+}
+
+#cityIcon{
+    width: 50px;
+    height: 50px;
+    align-self: center;
+}
+
+.cityDisplay {
+    position: relative;
+    left: 18%;
+    bottom: -21%;
+    opacity: 0%;
+}
+
+.dayDisplays{
+    opacity: 0%;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left: 38%;
+    bottom: 30%;
+    gap: 20px;
+}
+
+#dayOne{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #ffffff51;
+    border-radius: 25px;
+    border: 2px dashed #000000;
+}
+#dayTwo{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #ffffff51;
+    border-radius: 25px;
+    border: 2px dashed #000000;
+}
+#dayThree{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #ffffff51;
+    border-radius: 25px;
+    border: 2px dashed #000000;
+}
+#dayFour{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #ffffff51;
+    border-radius: 25px;
+    border: 2px dashed #000000;
+}
